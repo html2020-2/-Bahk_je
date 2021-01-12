@@ -97,21 +97,12 @@ $(document).ready(function(){
     var _btnlist = $('.info');//button태그 클래스명
     _btnlist.find('ul').hide();
 
-    _btnlist.on('click', function(){
-
-      if(!_btnlist.hasClass('active')){ //닫겨진 경우
-        _btnlist.addClass('active').find('ul').stop().slideDown('fast');
+    _btnlist.children('button').on('click', function(){
+      if(!$(this).parent().hasClass('active')){ //닫겨진 경우
+        $(this).next().stop().slideDown('fast').parent().addClass('active');
       }else{ //열린경우 닫기
-        _btnlist.removeClass('active').find('ul').stop().slideUp('fast');
+        $(this).next().stop().slideUp('fast').parent().removeClass('active')
       }
-
-      /* _btnlist.find('button').on('click', function(){
-        if($(this).next().size() === 0){
-        }else{
-          $(this).parent().siblings().removeClass('active').find('ul').stop().slideUp('fast');
-          
-        }
-      }); */
     });
 
   });
